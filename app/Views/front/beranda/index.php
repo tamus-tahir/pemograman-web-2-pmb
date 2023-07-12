@@ -140,34 +140,25 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2>Features</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                    <h2>Program Studi</h2>
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column align-items-lg-center">
-                        <div class="icon-box mt-5 mt-lg-0" data-aos="fade-up" data-aos-delay="100">
-                            <i class="bx bx-receipt"></i>
-                            <h4>Est labore ad</h4>
-                            <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-                        </div>
-                        <div class="icon-box mt-5" data-aos="fade-up" data-aos-delay="200">
-                            <i class="bx bx-cube-alt"></i>
-                            <h4>Harum esse qui</h4>
-                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-                        </div>
-                        <div class="icon-box mt-5" data-aos="fade-up" data-aos-delay="300">
-                            <i class="bx bx-images"></i>
-                            <h4>Aut occaecati</h4>
-                            <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-                        </div>
-                        <div class="icon-box mt-5" data-aos="fade-up" data-aos-delay="400">
-                            <i class="bx bx-shield"></i>
-                            <h4>Beatae veritatis</h4>
-                            <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
-                        </div>
+                    <div class="col-lg-6 ">
+                        <?php $delayPeriode = 100  ?>
+                        <?php foreach ($periode as $row) : ?>
+                            <div class="icon-box mt-5 mt-lg-0 mb-4" data-aos="fade-right" data-aos-delay="<?= $delayPeriode += 200; ?>">
+                                <i class="bx bx-receipt"></i>
+                                <h4><?= $row['periode']; ?></h4>
+                                <p>Tanggal Pendaftaran : <?= tanggalIndo($row['tanggal_mulai_pendaftaran']); ?> - <?= tanggalIndo($row['tanggal_selesai_pendaftaran']); ?></p>
+                                <p>Tanggal Ujian : <?= tanggalIndo($row['tanggal_ujian']); ?> <?= $row['jam_ujian']; ?></p>
+                                <p>Tanggal Wawancara : <?= tanggalIndo($row['tanggal_wawancara']); ?> <?= $row['jam_wawancara']; ?></p>
+                                <p><?= $row['keterangan']; ?></p>
+                            </div>
+                        <?php endforeach ?>
+
                     </div>
-                    <div class="image col-lg-6 order-1 order-lg-2 " data-aos="zoom-in" data-aos-delay="100">
+                    <div class="image col-lg-6 " data-aos="zoom-in" data-aos-delay="100">
                         <img src="/front/img/features.svg" alt="" class="img-fluid">
                     </div>
                 </div>
