@@ -66,7 +66,7 @@ class Prodi extends BaseController
     public function edit($id_prodi)
     {
         $data = [
-            'title' => 'Ubah Prodi',
+            'title' => 'Ubah Program Studi',
             'prodi' => $this->prodiModel->getId($id_prodi),
             'validation' => \Config\Services::validation(),
         ];

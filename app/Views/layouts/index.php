@@ -245,6 +245,7 @@
     <script src="/assets/plugins/dataTables/buttons.print.min.js"></script>
 
     <script src="/assets/plugins/highcharts/highcharts.js"></script>
+    <script src="/assets/plugins/ckeditor/ckeditor.js"></script>
 
     <!-- Template Main JS File -->
     <script src="/assets/js/main.js"></script>

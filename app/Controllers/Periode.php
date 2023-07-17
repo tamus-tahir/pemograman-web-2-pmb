@@ -18,7 +18,7 @@ class Periode extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Program Studi',
+            'title' => 'Periode Pendaftaran',
             'periode' => $this->periodeModel->get(),
         ];
 
@@ -28,7 +28,7 @@ class Periode extends BaseController
     public function new()
     {
         $data = [
-            'title' => 'Tambah Program Studi',
+            'title' => 'Tambah Periode Pendaftaran',
             'tahun' => $this->tahunModel->get(),
             'validation' => \Config\Services::validation(),
         ];
@@ -76,7 +76,7 @@ class Periode extends BaseController
     public function edit($id_periode)
     {
         $data = [
-            'title' => 'Ubah Periode',
+            'title' => 'Ubah Periode Pendaftaran',
             'periode' => $this->periodeModel->getId($id_periode),
             'tahun' => $this->tahunModel->get(),
             'validation' => \Config\Services::validation(),
