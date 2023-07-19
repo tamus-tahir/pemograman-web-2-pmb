@@ -26,4 +26,9 @@ class PendaftaranModel extends Model
             ->join('tabel_tahun', 'tabel_tahun.id_tahun = tabel_pendaftaran.id_tahun')
             ->first();
     }
+
+    public function getTahun($id_tahun)
+    {
+        return $this->where(['id_tahun' => $id_tahun])->first();
+    }
 }

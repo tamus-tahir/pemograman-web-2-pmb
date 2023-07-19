@@ -27,9 +27,10 @@ class PeriodeModel extends Model
             ->first();
     }
 
-    public function getUrutan()
+    public function getUrutan($id_tahun)
     {
         return $this->orderBy('urutan', 'ASC')
+            ->where(['tabel_periode.id_tahun' => $id_tahun])
             ->join('tabel_tahun', 'tabel_tahun.id_tahun = tabel_periode.id_tahun')
             ->findAll();
     }

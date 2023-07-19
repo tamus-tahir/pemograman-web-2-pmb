@@ -67,88 +67,49 @@
 </section>
 <!-- End Periode Pendaftaran -->
 
-<!-- ======= Pricing Section ======= -->
+<!-- ======= Biaya Kuliah ======= -->
 <section id="pricing" class="pricing section-bg">
     <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-            <h2>Pricing</h2>
-            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+            <h2>Biaya Kuliah Tahun Ajaran <?= $tahun['tahun']; ?></h2>
+            <p>Biaya Pendaftaran <?= number_format($pendaftaran['pendaftaran']); ?></p>
         </div>
 
-        <div class="row">
+        <div class="row justify-content-center">
 
-            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                <div class="box">
-                    <h3>Free</h3>
-                    <h4><sup>$</sup>0<span> / month</span></h4>
-                    <ul>
-                        <li>Aida dere</li>
-                        <li>Nec feugiat nisl</li>
-                        <li>Nulla at volutpat dola</li>
-                        <li class="na">Pharetra massa</li>
-                        <li class="na">Massa ultricies mi</li>
-                    </ul>
-                    <div class="btn-wrap">
-                        <a href="#" class="btn-buy">Buy Now</a>
+            <?php $delayProdi = 100  ?>
+            <?php foreach ($prodi as $row) : ?>
+                <div class="col-md-4 mb-3" data-aos="fade-up" data-aos-delay="<?= $delayProdi += 200; ?>">
+                    <div class="box featured">
+                        <h3><?= $row['prodi']; ?></h3>
+                        <ul>
+                            <?php foreach ($periode as $rowPeriode) : ?>
+
+                                <?php $spp = model('SppModel')->getSpp($row['id_prodi'], $rowPeriode['id_periode']) ?>
+
+                                <li>
+                                    <?= $rowPeriode['periode']; ?> SPP :
+                                    <span class="fw-bold">
+                                        <?= $spp ? number_format($spp['spp']) : ''; ?>
+                                    </span>
+                                </li>
+
+                            <?php endforeach ?>
+                        </ul>
+
+                        <?php $bpp = model('BppModel')->getBpp($row['id_prodi'], $tahun['id_tahun']) ?>
+                        <p>BPP : <span class="fw-bold"><?= $bpp ? number_format($bpp['bpp']) : ''; ?></span></p>
+
+                        <div class="btn-wrap">
+                            <a href="/registrasi-mahasiswa-baru" class="btn-buy">Daftar</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
-                <div class="box featured">
-                    <h3>Business</h3>
-                    <h4><sup>$</sup>19<span> / month</span></h4>
-                    <ul>
-                        <li>Aida dere</li>
-                        <li>Nec feugiat nisl</li>
-                        <li>Nulla at volutpat dola</li>
-                        <li>Pharetra massa</li>
-                        <li class="na">Massa ultricies mi</li>
-                    </ul>
-                    <div class="btn-wrap">
-                        <a href="#" class="btn-buy">Buy Now</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
-                <div class="box">
-                    <h3>Developer</h3>
-                    <h4><sup>$</sup>29<span> / month</span></h4>
-                    <ul>
-                        <li>Aida dere</li>
-                        <li>Nec feugiat nisl</li>
-                        <li>Nulla at volutpat dola</li>
-                        <li>Pharetra massa</li>
-                        <li>Massa ultricies mi</li>
-                    </ul>
-                    <div class="btn-wrap">
-                        <a href="#" class="btn-buy">Buy Now</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
-                <div class="box">
-                    <span class="advanced">Advanced</span>
-                    <h3>Ultimate</h3>
-                    <h4><sup>$</sup>49<span> / month</span></h4>
-                    <ul>
-                        <li>Aida dere</li>
-                        <li>Nec feugiat nisl</li>
-                        <li>Nulla at volutpat dola</li>
-                        <li>Pharetra massa</li>
-                        <li>Massa ultricies mi</li>
-                    </ul>
-                    <div class="btn-wrap">
-                        <a href="#" class="btn-buy">Buy Now</a>
-                    </div>
-                </div>
-            </div>
+            <?php endforeach ?>
 
         </div>
 
     </div>
-</section><!-- End Pricing Section -->
+</section><!-- End Biaya Kuliah-->
 <?= $this->endSection(); ?>

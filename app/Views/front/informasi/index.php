@@ -9,7 +9,7 @@
         </div>
 
         <div class="card p-3 shadow">
-
+            <?= $informasi['informasi']; ?>
         </div>
 
     </div>

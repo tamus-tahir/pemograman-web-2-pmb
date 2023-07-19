@@ -28,4 +28,9 @@ class BppModel extends Model
             ->join('tabel_prodi', 'tabel_prodi.id_prodi = tabel_bpp.id_prodi')
             ->first();
     }
+
+    public function getBpp($id_prodi, $id_tahun)
+    {
+        return $this->where(['id_prodi' => $id_prodi, 'id_tahun' => $id_tahun])->first();
+    }
 }

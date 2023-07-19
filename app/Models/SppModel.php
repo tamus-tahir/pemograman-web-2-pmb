@@ -30,4 +30,9 @@ class SppModel extends Model
             ->join('tabel_tahun', 'tabel_tahun.id_tahun = tabel_periode.id_tahun')
             ->first();
     }
+
+    public function getSpp($id_prodi, $id_periode)
+    {
+        return $this->where(['id_prodi' => $id_prodi, 'id_periode' => $id_periode])->first();
+    }
 }

@@ -5,7 +5,7 @@
 <form class="row g-3" method="post" action="/informasi/update" id="form" enctype="multipart/form-data">
 
     <div class="col-md-6">
-        <label for="id_tahun" class="form-label">Tahun Ajaran <span class="text-danger">*</span></label>
+        <label for="id_tahun" class="form-label">Tahun Ajaran Aktif <span class="text-danger">*</span></label>
         <select class="form-select <?= validation_show_error('id_tahun') ? 'is-invalid' : ''; ?>" id="id_tahun" name="id_tahun" required>
             <option value="">- Pilih Tahun Ajaran -</option>
             <?php foreach ($tahun as $row) : ?>
@@ -18,7 +18,7 @@
     </div>
 
     <div class="col-md-6">
-        <label for="id_periode" class="form-label">Periode <span class="text-danger">*</span></label>
+        <label for="id_periode" class="form-label">Periode Aktif <span class="text-danger">*</span></label>
         <select class="form-select <?= validation_show_error('id_periode') ? 'is-invalid' : ''; ?>" id="id_periode" name="id_periode" required>
             <option value="">- Pilih Periode -</option>
             <?php foreach ($periode as $row) : ?>

@@ -7,6 +7,7 @@
 
     <?php $config = model('ConfigModel')->getId(1) ?>
     <?php $informasi = model('InformasiModel')->getId(1) ?>
+    <?php $url = service('uri')->getsegment(1); ?>
     <title><?= $config['appname']; ?> || <?= $title; ?></title>
 
     <meta content="<?= $config['description']; ?>" name="description">
@@ -49,7 +50,7 @@
 <body>
 
     <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top ">
+    <header id="header" class="fixed-top <?= $url == '' ? '' : 'header-inner-pages'; ?>">
         <div class="container d-flex align-items-center justify-content-between">
             <h1 class="logo"><a href="index.html"><?= $config['appname']; ?></a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
@@ -57,10 +58,10 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="/">Beranda</a></li>
-                    <li><a class="nav-link scrollto" href="/informasi-pendaftaran">Informasi</a></li>
-                    <li><a class="nav-link scrollto" href="/registrasi-camaba">Registrasi</a></li>
-                    <li><a class="nav-link scrollto " href="/auth">Login</a></li>
+                    <li><a class="nav-link scrollto <?= $url == '' ? 'active' : ''; ?>" href="/">Beranda</a></li>
+                    <li><a class="nav-link scrollto <?= $url == 'informasi-pendaftaran' ? 'active' : ''; ?>" href="/informasi-pendaftaran">Informasi</a></li>
+                    <li><a class="nav-link scrollto <?= $url == 'registrasi-mahasiswa-baru' ? 'active' : ''; ?>" href="/registrasi-mahasiswa-baru">Registrasi</a></li>
+                    <li><a class="nav-link scrollto" href="/auth">Login</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -68,23 +69,26 @@
         </div>
     </header><!-- End Header -->
 
-    <!-- ======= Hero Section ======= -->
-    <section id="hero" class="d-flex align-items-center">
+    <?php if ($url == '') : ?>
+        <!-- ======= Hero Section ======= -->
+        <section id="hero" class="d-flex align-items-center">
 
-        <div class="container-fluid" data-aos="fade-up">
-            <div class="row justify-content-center">
-                <div class="col-xl-5 col-lg-6 pt-3 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
-                    <h1>UNITAMA</h1>
-                    <h2>Universitas Teknologi Akba Makassar</h2>
-                    <div><a href="/registrasi-camaba" class="btn-get-started scrollto">Daftar</a></div>
-                </div>
-                <div class="col-xl-4 col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="150">
-                    <img src="/assets/img/<?= $config['logo']; ?>" class="img-fluid animated" alt="">
+            <div class="container-fluid" data-aos="fade-up">
+                <div class="row justify-content-center">
+                    <div class="col-xl-5 col-lg-6 pt-3 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+                        <h1> Pendaftaran Mahasiswa Baru UNITAMA </h1>
+                        <h2>Bergabunglah bersama para profesional IT di UNITAMA untuk menjawab tantangan kebutuhan tenaga kerja pada sektor Teknologi Informasi dan Komunikasi.</h2>
+                        <div><a href="/registrasi-mahasiswa-baru" class="btn-get-started scrollto">Daftar</a></div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="150">
+                        <img src="/assets/img/<?= $config['logo']; ?>" class="img-fluid animated" alt="">
+                    </div>
                 </div>
             </div>
-        </div>
 
-    </section><!-- End Hero -->
+        </section>
+        <!-- End Hero -->
+    <?php endif ?>
 
     <main id="main">
 
@@ -165,6 +169,7 @@
     <div id="preloader"></div>
 
     <!-- Vendor JS Files -->
+    <script src="/assets/plugins/jquery/jquery-3.7.0.min.js"></script>
     <script src="/front/vendor/purecounter/purecounter_vanilla.js"></script>
     <script src="/front/vendor/aos/aos.js"></script>
     <script src="/front/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -173,8 +178,12 @@
     <script src="/front/vendor/swiper/swiper-bundle.min.js"></script>
     <script src="/front/vendor/php-email-form/validate.js"></script>
 
+    <script src="/assets/plugins/parsley/parsley.min.js"></script>
+    <script src="/assets/plugins/sweetalert2/sweetalert2@11"></script>
+
     <!-- Template Main JS File -->
     <script src="/front/js/main.js"></script>
+    <script src="/assets/js/script.js"></script>
 
 </body>
 
