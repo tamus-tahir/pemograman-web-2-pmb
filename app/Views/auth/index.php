@@ -81,7 +81,10 @@
                                         </div>
 
 
-                                        <div class="col-12">
+                                        <div class="col-md-6">
+                                            <a class="btn btn-success w-100" href="/">Beranda</a>
+                                        </div>
+                                        <div class="col-md-6">
                                             <button class="btn btn-primary w-100" type="submit">Login</button>
                                         </div>
 

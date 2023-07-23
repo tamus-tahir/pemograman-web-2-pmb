@@ -8,15 +8,17 @@ class Formulir extends BaseController
 {
     protected $formulirModel;
     protected $prodiModel;
-    protected $informasiModel;
     protected $pendaftaranModel;
+    protected $configModel;
+    protected $informasiModel;
 
     public function __construct()
     {
         $this->formulirModel =  new \App\Models\FormulirModel;
         $this->prodiModel =  new \App\Models\ProdiModel;
-        $this->informasiModel =  new \App\Models\InformasiModel;
         $this->pendaftaranModel =  new \App\Models\PendaftaranModel;
+        $this->configModel =  new \App\Models\ConfigModel;
+        $this->informasiModel =  new \App\Models\InformasiModel;
     }
 
     public function index()
@@ -27,6 +29,41 @@ class Formulir extends BaseController
         ];
 
         return view('formulir/index', $data);
+    }
+
+    public function detail($id_formulir)
+    {
+        $data = [
+            'title' => 'Detail Formulir',
+            'formulir' => $this->formulirModel->getId($id_formulir),
+        ];
+
+        return view('formulir/detail', $data);
+    }
+
+    public function pdf($id_formulir)
+    {
+        $data = [
+            'title' => 'Detail Formulir',
+            'config' => $this->configModel->getId(1),
+            'informasi' => $this->informasiModel->getId(1),
+            'formulir' => $this->formulirModel->getId($id_formulir),
+        ];
+
+        $mpdf = new \Mpdf\Mpdf([
+            'mode' => 'utf-8',
+            'format' => 'A4-P',
+            'margin_left' => 10,
+            'margin_right' => 10,
+            'margin_top' => 10,
+            'margin_bottom' => 10,
+        ]);
+
+        // Write some HTML code:
+        $mpdf->WriteHTML(view('formulir/pdf', $data));
+
+        // Output a PDF file directly to the browser
+        $mpdf->Output('kartu-ujian.pdf', 'D');
     }
 
     public function new()

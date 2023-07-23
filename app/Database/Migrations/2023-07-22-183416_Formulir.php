@@ -30,6 +30,9 @@ class Formulir extends Migration
             'pilihan_kedua' => [
                 'type'       => 'INT',
             ],
+            'prodi_lulus' => [
+                'type'       => 'INT',
+            ],
             'nama_pendaftar' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '128',

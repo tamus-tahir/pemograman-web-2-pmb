@@ -26,6 +26,16 @@ function getMenu($param)
     return '';
 }
 
+function getProdi($param)
+{
+    $prodi = model('ProdiModel')->getId($param);
+    if ($prodi) {
+        return $prodi['prodi'];
+    }
+
+    return '';
+}
+
 function tanggalIndo($date)
 {
     $tanggal = explode("-", $date);
@@ -75,6 +85,57 @@ function tanggalIndo($date)
     return $tanggalBaru;
 }
 
+function tanggalIndoTime($date)
+{
+    $date = explode(" ", $date);
+    $tanggal = explode("-", $date[0]);
+
+    switch ($tanggal[1]) {
+        case "1":
+            $tanggal[1] = "Januari";
+            break;
+        case "2":
+            $tanggal[1] = "Februari";
+            break;
+        case "3":
+            $tanggal[1] = "Maret";
+            break;
+        case "4":
+            $tanggal[1] = "April";
+            break;
+        case "5":
+            $tanggal[1] = "Mei";
+            break;
+        case "6":
+            $tanggal[1] = "Juni";
+            break;
+        case "7":
+            $tanggal[1] = "Juli";
+            break;
+        case "8":
+            $tanggal[1] = "Agustus";
+            break;
+        case "9":
+            $tanggal[1] = "September";
+            break;
+        case "10":
+            $tanggal[1] = "Oktober";
+            break;
+        case "11":
+            $tanggal[1] = "November";
+            break;
+        case "12":
+            $tanggal[1] = "Desember";
+            break;
+        default:
+            $tanggal[1] = "No Date";
+    }
+
+    $tanggalBaru = $tanggal[2] . ' ' . $tanggal[1] . ' ' . $tanggal[0];
+    return $tanggalBaru . ' ' .  $date[1];
+}
+
+
 function nomorFormulir()
 {
     $formulir = model('FormulirModel')->getMaxNomor();
@@ -108,15 +169,21 @@ function getStatus($param)
             $param = "Pembayaran Formulir Diterima";
             break;
         case "3":
-            $param = "Tidak Lulus Ujian";
+            $param = "Berkas Formulir Ditolak";
             break;
         case "4":
-            $param = "Lulus Ujian";
+            $param = "Berkas Formulir Diterima";
             break;
         case "5":
-            $param = "Pembayaran Ditolak";
+            $param = "Tidak Lulus Ujian";
             break;
         case "6":
+            $param = "Lulus Ujian";
+            break;
+        case "7":
+            $param = "Pembayaran Ditolak";
+            break;
+        case "8":
             $param = "Pembayaran SPP & BPP Diterima";
             break;
         default:

@@ -69,7 +69,7 @@
         </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-4 <?= $formulir['status'] == 0 ? '' : 'd-none'; ?>">
         <label for="pembayaran_pendaftaran" class="form-label">Upload Bukti Pembayaran <span class="text-danger">*</span></label>
         <label for="pembayaran_pendaftaran" class="form-label"><span class="text-danger">(Type PNG/JPG/JPEG, Max Size 500Kb)</span></label>
         <input class="form-control <?= validation_show_error('pembayaran_pendaftaran') ? 'is-invalid' : ''; ?>" type="file" id="upload-3" name="pembayaran_pendaftaran">
