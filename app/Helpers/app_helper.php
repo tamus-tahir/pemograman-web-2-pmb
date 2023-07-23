@@ -74,3 +74,54 @@ function tanggalIndo($date)
     $tanggalBaru = $tanggal[2] . ' ' . $tanggal[1] . ' ' . $tanggal[0];
     return $tanggalBaru;
 }
+
+function nomorFormulir()
+{
+    $formulir = model('FormulirModel')->getMaxNomor();
+    $nomor = $formulir['nomor'];
+
+    if ($nomor) {
+        $prefix = 'NPU-';
+        if (substr($nomor, 0, strlen($prefix)) === $prefix) {
+            $nomor = substr($nomor, strlen($prefix));
+        }
+        $nomor++;
+        // 2
+    } else {
+        $nomor = 1;
+    }
+
+    $nomorBaru = 'NPU-' . sprintf("%06s", $nomor);
+    return $nomorBaru;
+}
+
+function getStatus($param)
+{
+    switch ($param) {
+        case "0":
+            $param = "Belum Diverifikasi";
+            break;
+        case "1":
+            $param = "Pembayaran Ditolak";
+            break;
+        case "2":
+            $param = "Pembayaran Formulir Diterima";
+            break;
+        case "3":
+            $param = "Tidak Lulus Ujian";
+            break;
+        case "4":
+            $param = "Lulus Ujian";
+            break;
+        case "5":
+            $param = "Pembayaran Ditolak";
+            break;
+        case "6":
+            $param = "Pembayaran SPP & BPP Diterima";
+            break;
+        default:
+            $param = "Error";
+    }
+
+    return $param;
+}

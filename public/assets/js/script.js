@@ -58,6 +58,12 @@ $('.btn-delete').on('click', function (e) {
 $('#upload').on('change', function (event) {
     $('#preview').attr('src', URL.createObjectURL(event.target.files[0]))
 })
+$('#upload-2').on('change', function (event) {
+    $('#preview-2').attr('src', URL.createObjectURL(event.target.files[0]))
+})
+$('#upload-3').on('change', function (event) {
+    $('#preview-3').attr('src', URL.createObjectURL(event.target.files[0]))
+})
 // ===== end preview image before upload =====
 
 // ===== data table =====

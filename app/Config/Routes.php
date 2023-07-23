@@ -32,6 +32,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Beranda::index');
 $routes->get('/informasi-pendaftaran', 'Informasipendaftaran::index');
 $routes->get('/registrasi-mahasiswa-baru', 'Registrasi::index');
+$routes->post('/registrasi-mahasiswa-baru/create', 'Registrasi::create');
 
 /*
  * --------------------------------------------------------------------
